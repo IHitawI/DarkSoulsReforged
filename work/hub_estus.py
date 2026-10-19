@@ -100,8 +100,9 @@ def patch_bonfire(src):
                       + f'{i20}AddTalkListData({KINDLE_SLOT}, {KINDLE_TEXT}, {HAS_SHARD})' + NL)
     branch = [f'{i20}elif GetTalkListEntryResult() == {KINDLE_SLOT}:', f'{i24}# FirelinkHub: kindle an Estus Shard',
               f'{i24}PlayerEquipmentQuantityChange(ItemType.Goods, {SHARD}, -1)',
-              f'{i24}PlayerEquipmentQuantityChange(ItemType.Goods, {KINDLED}, 1)',
-              f'{i24}SetEventFlag({HAS_SHARD}, FlagState.Off)']
+              f'{i24}PlayerEquipmentQuantityChange(ItemType.Goods, {KINDLED}, 1)']
+    # HAS_SHARD is left to patch_common's event: it goes off when the bag is empty. Switching it off here hid
+    # the entry while more shards were still in the bag (the event only turned it on again for a new shard).
     anchor_branch = NL + f'{i20}elif GetTalkListEntryResult() == 1:' + NL
     assert src.count(anchor_branch) == 1
     return src.replace(anchor_branch, NL + NL.join(branch) + anchor_branch)

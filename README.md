@@ -25,6 +25,7 @@ The plan is in [docs/Dark_Souls_Reforged_GDD.docx](docs/Dark_Souls_Reforged_GDD.
 ```
 cd work
 python build.py
+python audit.py      # flags vs the game's, map entities, debug menu, dialogs: must say "problems: 0"
 python install.py
 ```
 

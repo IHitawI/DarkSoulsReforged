@@ -12,10 +12,10 @@ import hub_champions
 NL = chr(10)
 TEXT_BASE = 15009400          # Event_text: bounties (menu entry, task / paid per bounty, "no more")
 ADVICE_BASE = 15009440        # Event_text: menu entry, the tips, "that's all"
-REWARD_FLAG = 11027100        # 11027100.. "bounty k paid"
-TIP_FLAG = 11027120           # 11027120.. "tip k told"
-PASS_FLAG = 11027119          # "Talk" chosen: let his own dialog answer the next press
-USED_FLAG = 11027118          # ... and that press came: once the talk is over, PASS goes off
+REWARD_FLAG = 11028100        # 11028100.. "bounty k paid" (11027xxx: 11027020..290 are the game's shop sold-out flags)
+TIP_FLAG = 11028120           # 11028120.. "tip k told"
+PASS_FLAG = 11028119          # "Talk" chosen: let his own dialog answer the next press
+USED_FLAG = 11028118          # ... and that press came: once the talk is over, PASS goes off
 ZONES_RU = {'m10_01_00_00': 'Уезд нежити, в нефе церкви', 'm10_00_00_00': 'Глубины',
             'm14_00_00_00': 'Чумной город', 'm12_00_00_00': 'Сад Тёмных корней',
             'm15_00_00_00': 'Крепость Сена', 'm13_00_00_00': 'Катакомбы',

@@ -20,6 +20,7 @@ import hub_yulia, hub_respec, hub_estus, hub_champions, hub_travel, hub_bosses, 
 from load import P
 
 MENU_TEXT = 15009500   # Event_text ids 15009500.. (debug only)
+DONE_TEXT = 15009699   # "Done" after an action
 BELL2_FLAG = 11400200  # second Bell of Awakening (Blighttown)
 LORDVESSEL = hub_travel.LORDVESSEL
 GOD_SP, ONE_SHOT_SP = 92900, 92901
@@ -41,6 +42,8 @@ COVENANT = {109: 30, 374: 30, 375: 30, 1110: 30}   # Eye of Death, Souvenir of R
 RINGS = {128: 1, 100: 1, 143: 1}                  # Dark Wood Grain (the combo ring), Havel's, Favor and Protection
 # ChangePlayerStat sets the number only: HP, stamina and attunement slots stay as they were (a Cleric with
 # Attunement 99 showed 1 slot and 594 HP) until something recomputes them - a level up at the bonfire.
+# ChangePlayerStat sets the number only: HP, stamina and attunement slots stay as they were (a Cleric with
+# Attunement 99 still had 1 slot and 594 HP) until a level up at the bonfire recomputes them.
 STAT_NAMES = ('Vitality', 'Attunement', 'Endurance', 'Strength', 'Dexterity', 'Intelligence', 'Faith')   # no Resistance in DSR's ESD
 YULIA_FLAGS = [hub_yulia.IAITO_FLAG, hub_yulia.UCHI_FLAG, hub_yulia.FOUND_FLAG]
 EXTRA_BOSSES = [(11010001, 'Горгульи колокола', 'Bell Gargoyles'), (GIANT_GATE, 'Орнштейн и Смоуг', 'Ornstein and Smough')]
@@ -142,7 +145,8 @@ def setup(travel):
         (4, 'Эстус', 'Estus', [
             (1, 'Осколок эстуса', 'Estus Shard', give('Goods', {hub_estus.SHARD: 1})),
             (2, '+1 Пламя эстуса (+1 фляга сразу)', '+1 Estus Flame (+1 charge now)', give('Goods', {hub_estus.KINDLED: 1})),
-            (3, 'Пламя эстуса: сбросить (3 фляги)', 'Estus Flames: reset (3 charges)', give('Goods', {hub_estus.KINDLED: -99})),
+            (3, 'Пламя эстуса: сбросить (3 фляги)', 'Estus Flames: reset (3 charges)',
+             give('Goods', {hub_estus.KINDLED: -1}) * (hub_estus.MAX - hub_estus.BASE)),
             (99, 'Назад', 'Back', None),
         ]),
         (5, 'Боссы: отметить побеждённым', 'Bosses: mark as defeated', [
@@ -187,6 +191,7 @@ def _texts():
     TEXT.clear()
     TEXT_IDS.clear()
     TEXT[('event', MENU_TEXT)] = {'ru': '[Отладка Reforged]', 'en': '[Reforged debug]', 'copy': None}
+    TEXT[('event', DONE_TEXT)] = {'ru': 'Готово.', 'en': 'Done.', 'copy': None}
     nxt = MENU_TEXT + 1
     seen = {}
     def walk(menu):
@@ -204,7 +209,7 @@ def _texts():
             if isinstance(act, list) and act and isinstance(act[0], tuple):
                 walk(act)
     walk(MENU)
-    assert nxt < 15009700, nxt
+    assert nxt < DONE_TEXT, nxt
 
 
 def apply():
@@ -228,7 +233,9 @@ def apply():
 
 def _menu(menu, ind, leave):
     """ESD lines for one (sub)menu loop at indentation `ind`."""
-    out = [f'{ind}while True:', f'{ind}    ClearTalkListData()', f'{ind}    ShowShopMessage(TalkOptionsType.Old, False, False)']
+    # the menu we came from is still open: close it first, or the new list is drawn over the old one
+    out = [f'{ind}CloseShopMessage()',
+           f'{ind}while True:', f'{ind}    ClearTalkListData()', f'{ind}    ShowShopMessage(TalkOptionsType.Old, False, False)']
     for (slot, ru, en, act), tid in zip(menu, TEXT_IDS[id(menu)]):
         out += [f'{ind}    # action:{tid}', f'{ind}    AddTalkListData({slot}, {tid}, -1)']
     back = [s for s, _, _, a in menu if a is None]
@@ -244,6 +251,10 @@ def _menu(menu, ind, leave):
             out += _menu(act, i2, leave)
         else:
             out += [f'{i2}{l}' for l in act]
+            if not act[-1].startswith('Goto'):     # every action says it worked; the menu comes back after
+                out += [f'{i2}OpenGenericDialog(DialogBoxType.CenterBottom1, {DONE_TEXT}, DialogResult.Left, '
+                        f'DialogBoxStyle.OrnateNoOptions, 2)',
+                        f'{i2}if not IsGenericDialogOpen():', f'{i2}    pass']
     return out
 
 

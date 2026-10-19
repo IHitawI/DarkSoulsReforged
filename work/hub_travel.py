@@ -15,15 +15,16 @@ from emevd import Emevd, decode_args, build as build_emevd
 
 LORDVESSEL = 710
 EVENT_BASE = 11027800        # 11027800..898: events of the first (map event) warp, no longer built
-REQUEST_BASE = 11027200      # request flag per bonfire, 11027200..298 (was 11027850..: with the 11 restored
-                             # bonfires it ran into the Yulia quest flags 11027903/904 - her quest warped you)
-UNLOCK_REQUEST = 11027299    # debug "unlock all bonfires": set here, the flags themselves are set by UNLOCK_EVENT
+REQUEST_BASE = 11028200      # request flag per bonfire, 11028200..298. Was 11027850.. (ran into the Yulia quest
+                             # flags 11027903/904), then 11027200.. (the game's shop sold-out flags: Griggs' Fall
+                             # Control is 11027200 - buying it would have warped you). 11028xxx: the game uses none.
+UNLOCK_REQUEST = 11028299    # debug "unlock all bonfires": set here, the flags themselves are set by UNLOCK_EVENT
 UNLOCK_EVENT = 11027899      # after the bonfire menu has closed (setting them from the menu locked it up)
 # Leaving the bonfire before an event warp: close the menu AND stand up, like "Leave" does. L12 is the exit
 # after the vanilla warp menu, where the engine moves the player itself; used for an event warp it left the
 # player sitting with no menu - stuck at the bonfire.
 STAND_UP = ['ForceEndTalk(0)', 'ClearTalkProgressData()', 'CloseShopMessage()', 'EndBonfireKindleAnimLoop()', "Goto('L1')"]
-FLAG_SPACE = 99              # bonfires that fit: events 11027800.., requests 11027200..
+FLAG_SPACE = 99              # bonfires that fit: requests 11028200..298
 TEXT_BASE = 15009200         # Event_text ids: menu entry, zones, bonfires
 MENU_SLOT = 14
 
@@ -99,8 +100,9 @@ def patch_bonfire(src, bfs):
                                                 f'{i20}AddTalkListData({MENU_SLOT}, {TEXT_BASE}, {LORDVESSEL})\n')
     leave = ('(CompareBonfireState(0) or IsPlayerDead() or HasPlayerBeenAttacked() or IsTalkingToSomeoneElse() '
              'or GetDistanceToPlayer() > 8)')
+    # every submenu closes the list it came from first, or the new one is drawn over the old one
     L = [f'{i20}elif GetTalkListEntryResult() == {MENU_SLOT}:', f'{i24}# FirelinkHub: travel to any lit bonfire',
-         f'{i24}while True:', f'{i24}    ClearTalkListData()', f'{i24}    ShowShopMessage(TalkOptionsType.Old, False, False)']
+         f'{i24}CloseShopMessage()', f'{i24}while True:', f'{i24}    ClearTalkListData()', f'{i24}    ShowShopMessage(TalkOptionsType.Old, False, False)']
     zones = list(ZONES)
     for z, mp in enumerate(zones, 1):
         L += [f'{i24}    AddTalkListData({z}, {zone_id[mp]}, -1)']
@@ -108,7 +110,7 @@ def patch_bonfire(src, bfs):
           f'{i24}    if {leave}:', f"{i24}        Goto('L1')",
           f'{i24}    elif GetTalkListEntryResult() == 0 or GetTalkListEntryResult() == 99:', f'{i24}        break']
     for z, mp in enumerate(zones, 1):
-        L += [f'{i24}    elif GetTalkListEntryResult() == {z}:', f'{i24}        while True:',
+        L += [f'{i24}    elif GetTalkListEntryResult() == {z}:', f'{i24}        CloseShopMessage()', f'{i24}        while True:',
               f'{i24}            ClearTalkListData()', f'{i24}            ShowShopMessage(TalkOptionsType.Old, False, False)']
         mine = [(k, fl) for k, (m, fl, _) in enumerate(bfs) if m == mp]
         for slot, (k, fl) in enumerate(mine, 1):
