@@ -1,0 +1,32 @@
+# build output and game files (vanilla params, msg, dumps): never in the repo
+work/out/
+work/orig/
+work/hub/*
+!work/hub/bonfire_flags.txt
+work/icons/*.png
+!work/icons/estus_shard.png
+work/venv/
+__pycache__/
+*.pyc
+*.log
+work/verify_out.txt
+
+# DLL build products and memory-research dumps
+work/dll/*.dll
+work/dll/*.lib
+work/dll/*.pdb
+work/dll/*.pkl
+work/dll/*.log
+
+# third-party tools and downloaded icons (see README)
+tools_dl/
+
+# old copy of the DLL sources
+FirelinkHub_mod/dll/
+
+# the old mod folder: only its docs are kept (the scripts there are stale copies of work/)
+FirelinkHub_mod/*
+!FirelinkHub_mod/*.md
+
+# one-off research scripts
+work/q[0-9]*.py

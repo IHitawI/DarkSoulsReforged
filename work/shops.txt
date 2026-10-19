@@ -1,0 +1,419 @@
+['equipId', 'value', 'mtrlId', 'eventFlag', 'qwcId', 'sellQuantity', 'shopType', 'equipType']
+== 1: Divine Blessing
+   1 type 3 240 Небесное благословение price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 1100: [Undead Merchant - Male] Orange Guidance Soapstone
+   1100 type 3 106 Оранжевый путевой мелок price 100 qty 1 flag 11017020 qwc -1 shopType 0 mtrl -1
+   1101 type 3 280 Порошок для починки price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1102 type 3 290 Метательный нож price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1103 type 3 292 Огненная бомба price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1104 type 3 296 Талисман Ллойда price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1105 type 3 2021 Ключ от жилища price 1000 qty 1 flag 11017030 qwc -1 shopType 0 mtrl -1
+   1106 type 3 2602 Ремонтный ящик price 3000 qty 1 flag 11017040 qwc -1 shopType 0 mtrl -1
+   1107 type 0 100000 Кинжал price 300 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1108 type 0 200000 Короткий меч price 600 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1110 type 0 400000 Сабля price 600 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1111 type 0 601000 Рапира price 600 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1112 type 0 700000 Топорик price 450 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1113 type 0 800000 Дубина price 150 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1114 type 0 809000 Усиленная дубина price 350 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1115 type 0 1000000 Копье price 600 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1116 type 0 1200000 Короткий лук price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1117 type 0 1400000 Легкий щит price 400 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1118 type 0 1403000 Малый кожаный щит price 600 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1119 type 0 1405000 Баклер price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1120 type 0 1408000 Кожаный щит price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1121 type 0 1450000 Треугольный щит price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1122 type 0 1460000 Воинский щит price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1123 type 0 2000000 Обычная стрела price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1124 type 0 2001000 Длинная стрела price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1125 type 0 2006000 Деревянная стрела price 3 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1126 type 0 2100000 Обычный болт price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1127 type 0 2101000 Тяжелый болт price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1128 type 0 2103000 Деревянный болт price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1129 type 1 170000 Кольчужный шлем price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1130 type 1 171000 Кольчуга price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1131 type 1 172000 Кожаные наручи price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1132 type 1 173000 Кольчужные поножи price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1133 type 3 2608 Бездонная шкатулка price 1000 qty 1 flag 11007010 qwc -1 shopType 0 mtrl -1
+   1134 type 3 385 Засушенный палец price 2000 qty 1 flag 11017210 qwc -1 shopType 0 mtrl -1
+== 1200: [Undead Merchant - Female] Bloodred Moss Clump
+   1200 type 3 270 Заросли красного мха price 300 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1201 type 3 271 Заросли фиолетового мха price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1202 type 3 272 Заросли цветущего фиол. мха price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1203 type 3 291 Отравленный метательный нож price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1204 type 3 293 Навозный пирог price 200 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1205 type 3 294 Красивый череп price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1206 type 3 310 Черная смола price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1207 type 3 312 Кратковременное проклятие price 4000 qty 4 flag 11017190 qwc -1 shopType 0 mtrl -1
+   1208 type 3 313 Гнилая смола price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1209 type 3 330 Косточка возвращения price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1210 type 3 370 Радужный камень price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1211 type 3 500 Человечность price 5000 qty 1 flag 11027020 qwc -1 shopType 0 mtrl -1
+   1212 type 0 2003000 Огненная стрела price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1213 type 0 2004000 Отравленная стрела price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1214 type 3 274 Камень Очищения price 6000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1215 type 0 2000000 Обычная стрела price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1216 type 0 2001000 Длинная стрела price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1217 type 0 2006000 Деревянная стрела price 3 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1218 type 0 2100000 Обычный болт price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1219 type 0 2101000 Тяжелый болт price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1220 type 0 2103000 Деревянный болт price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 5300: [Crestfallen Merchant] Green Blossom
+   5300 type 3 260 Зеленый цветок price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5301 type 3 297 Черн. огнен. бомба price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5302 type 3 1000 Осколок титанита price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5303 type 3 1010 Больш. оск. титанита price 4000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5304 type 3 1020 Оск. зел. титанита price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5306 type 2 106 Громовое кольцо с камнем price 15000 qty 1 flag 11507030 qwc -1 shopType 0 mtrl -1
+   5307 type 2 107 Волшебное кольцо с камнем price 15000 qty 1 flag 11507040 qwc -1 shopType 0 mtrl -1
+   5308 type 0 351000 Большой меч price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5309 type 0 750000 Большая секира price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5310 type 0 1455000 Балдерский щит price 4000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5311 type 0 1501000 Осадный щит price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5312 type 0 2000000 Обычная стрела price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5313 type 0 2001000 Длинная стрела price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5314 type 0 2002000 Длинноперая стрела price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5315 type 0 2100000 Обычный болт price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5316 type 0 2101000 Тяжелый болт price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5317 type 0 2102000 Меткий болт price 250 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5318 type 1 10000 Катаринский шлем price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5319 type 1 11000 Катаринский доспех price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5320 type 1 12000 Катаринские наручи price 7000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5321 type 1 13000 Катаринские поножи price 7000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5322 type 1 490000 Стальной шлем price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5323 type 1 491000 Стальной доспех price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5324 type 1 492000 Стальные наручи price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5325 type 1 493000 Стальные поножи price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5326 type 1 510000 Балдерский шлем price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5327 type 1 511000 Балдерский доспех price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5328 type 1 512000 Балдерские наручи price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   5329 type 1 513000 Балдерские поножи price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 1400: [Andre] Titanite Shard
+   1400 type 3 1000 Осколок титанита price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1401 type 3 2002 Символ Арториаса price 20000 qty 1 flag 11017140 qwc -1 shopType 0 mtrl -1
+   1402 type 3 2600 Оружейный ящик кузнеца price 2000 qty 1 flag 11017150 qwc -1 shopType 0 mtrl -1
+   1403 type 3 2601 Доспешный ящик кузнеца price 2000 qty 1 flag 11017160 qwc -1 shopType 0 mtrl -1
+   1404 type 3 2602 Ремонтный ящик price 2000 qty 1 flag 11017170 qwc -1 shopType 0 mtrl -1
+   1405 type 0 201000 Длинный меч price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1406 type 0 202000 Палаш price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1407 type 0 300000 Полуторный меч price 3000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1408 type 0 701000 Секира price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1409 type 0 803000 Клевец price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1410 type 0 901000 Цестус price 200 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1411 type 0 1050000 Пика price 2000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1412 type 0 1402000 Большой кожаный щит price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1413 type 0 1452000 Башенный щит price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1414 type 0 1477000 Треугольный щит-кадуцей price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1415 type 0 2000000 Обычная стрела price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1416 type 0 2001000 Длинная стрела price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1417 type 0 2006000 Деревянная стрела price 3 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1418 type 0 2100000 Обычный болт price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1419 type 0 2101000 Тяжелый болт price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1420 type 0 2103000 Деревянный болт price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 1500: [Domhnall of Zena] Gold Pine Resin
+   1500 type 3 311 Золотая смола price 1000 qty 3 flag 11007000 qwc -1 shopType 0 mtrl -1
+   1501 type 3 2608 Бездонная шкатулка price 1000 qty 1 flag 11007010 qwc -1 shopType 0 mtrl -1
+   1502 type 0 205000 Прямой меч кристалла price 4000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1503 type 0 304000 Большой меч кристалла price 6000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1504 type 0 1471000 Кристальный щит price 4000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1505 type 1 110000 Шлем Мудрого price 12000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1506 type 1 111000 Доспехи Славного price 15000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1507 type 1 112000 Наручи Победителя price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1508 type 1 113000 Сапоги Исследователя price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1509 type 0 2000000 Обычная стрела price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1510 type 0 2001000 Длинная стрела price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1511 type 0 2006000 Деревянная стрела price 3 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1512 type 0 2100000 Обычный болт price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1513 type 0 2101000 Тяжелый болт price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1514 type 0 2103000 Деревянный болт price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1550 type 1 470000 Шлем голема price 5000 qty 1 flag 11807020 qwc -1 shopType 0 mtrl -1
+   1551 type 1 471000 Доспех голема price 7000 qty 1 flag 11807030 qwc -1 shopType 0 mtrl -1
+   1552 type 1 472000 Наручи голема price 5000 qty 1 flag 11807040 qwc -1 shopType 0 mtrl -1
+   1553 type 1 473000 Поножи голема price 5000 qty 1 flag 11807050 qwc -1 shopType 0 mtrl -1
+   1554 type 1 80000 Шлем Смоуга price 6000 qty 1 flag 11807060 qwc -1 shopType 0 mtrl -1
+   1555 type 1 81000 Доспех Смоуга price 7000 qty 1 flag 11807070 qwc -1 shopType 0 mtrl -1
+   1556 type 1 82000 Наручи Смоуга price 5000 qty 1 flag 11807080 qwc -1 shopType 0 mtrl -1
+   1557 type 1 83000 Поножи Смоуга price 5000 qty 1 flag 11807090 qwc -1 shopType 0 mtrl -1
+   1558 type 1 270000 Шлем Орнстейна price 7000 qty 1 flag 11807100 qwc -1 shopType 0 mtrl -1
+   1559 type 1 271000 Доспех Орнстейна price 8000 qty 1 flag 11807110 qwc -1 shopType 0 mtrl -1
+   1560 type 1 272000 Наручи Орнстейна price 6000 qty 1 flag 11807120 qwc -1 shopType 0 mtrl -1
+   1561 type 1 273000 Поножи Орнстейна price 6000 qty 1 flag 11807130 qwc -1 shopType 0 mtrl -1
+   1562 type 1 540000 Корона Темного Солнца price 10000 qty 1 flag 11807230 qwc -1 shopType 0 mtrl -1
+   1563 type 1 541000 Лунная накидка price 10000 qty 1 flag 11807170 qwc -1 shopType 0 mtrl -1
+   1564 type 1 542000 Лунные перчатки price 10000 qty 1 flag 11807180 qwc -1 shopType 0 mtrl -1
+   1565 type 1 543000 Лунная юбка price 10000 qty 1 flag 11807190 qwc -1 shopType 0 mtrl -1
+   1566 type 1 550000 Корона Великого Повелителя price 20000 qty 1 flag 11807240 qwc -1 shopType 0 mtrl -1
+   1567 type 1 551000 Мантия Великого Повелителя price 20000 qty 1 flag 11807200 qwc -1 shopType 0 mtrl -1
+   1568 type 1 552000 Браслет Великого Повелителя price 20000 qty 1 flag 11807210 qwc -1 shopType 0 mtrl -1
+   1569 type 1 553000 Сандалии Великого Повелителя price 20000 qty 1 flag 11807220 qwc -1 shopType 0 mtrl -1
+   1580 type 3 2100 Отмычка price 5000 qty 1 flag 11007020 qwc -1 shopType 0 mtrl -1
+   1581 type 1 660000 Шлем Арториаса price 20000 qty 1 flag 11217060 qwc -1 shopType 0 mtrl -1
+   1582 type 1 661000 Доспех Арториаса price 20000 qty 1 flag 11217070 qwc -1 shopType 0 mtrl -1
+   1583 type 1 662000 Наручи Арториаса price 20000 qty 1 flag 11217080 qwc -1 shopType 0 mtrl -1
+   1584 type 1 663000 Поножи Арториаса price 20000 qty 1 flag 11217090 qwc -1 shopType 0 mtrl -1
+== 1600: [Patches] Eye of Death
+   1600 type 3 109 Око смерти price 3000 qty 3 flag 11307000 qwc -1 shopType 0 mtrl -1
+   1601 type 3 240 Небесное благословение price 20000 qty 1 flag 11027040 qwc -1 shopType 0 mtrl -1
+   1602 type 3 370 Радужный камень price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1603 type 3 500 Человечность price 10000 qty 3 flag 11027050 qwc -1 shopType 0 mtrl -1
+   1604 type 3 501 Двойная человечность price 20000 qty 1 flag 11307010 qwc -1 shopType 0 mtrl -1
+   1605 type 3 5000 Чудо: Лечение price 5000 qty 1 flag 11027090 qwc -1 shopType 0 mtrl -1
+   1606 type 3 5020 Слова мощного лечения price 10000 qty 1 flag 11027100 qwc -1 shopType 0 mtrl -1
+   1607 type 0 702000 Полукруглый топор price 10000 qty 1 flag 11307020 qwc -1 shopType 0 mtrl -1
+   1608 type 0 801000 Палица price 3000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1609 type 0 1361000 Холщовый талисман price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1610 type 0 1362000 Талисман Торолунда price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1611 type 1 590000 Маска Отца price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1612 type 1 600000 Маска Матери price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1613 type 1 610000 Маска Ребенка price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1614 type 1 180000 Шлем клирика price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1615 type 1 181000 Доспех клирика price 7000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1616 type 1 182000 Наручи клирика price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1617 type 1 183000 Поножи клирика price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 1700: [Shiva of the East] East Wood Grain Ring
+   1700 type 2 145 Rольцо из восточного дерева price 10000 qty 1 flag 11407000 qwc -1 shopType 0 mtrl -1
+   1701 type 0 303000 Фламберг price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1702 type 0 306000 Каменный большой меч price 15000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1703 type 0 352000 Демоническое мачете price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1704 type 0 402000 Шотел price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1705 type 0 500000 Утигатана price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1706 type 0 501000 Катана price 20000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1707 type 0 751000 Демоническая секира price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1708 type 0 902000 Коготь price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   1709 type 0 1003000 Демоническое копье price 15000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 2000: [Griggs of Vinheim] Soul Arrow
+   2000 type 3 3000 Волшебство: Стрела души price 1000 qty 1 flag 11027130 qwc -1 shopType 0 mtrl -1
+   2001 type 3 3010 Волшебство: Большая стрела души price 6000 qty 1 flag 11027140 qwc -1 shopType 0 mtrl -1
+   2002 type 3 3020 Волшебство: Тяжелая стрела души price 2000 qty 1 flag 11027150 qwc -1 shopType 0 mtrl -1
+   2003 type 3 3030 Волшебство: Больш. стрела души price 8000 qty 1 flag 11027160 qwc -1 shopType 0 mtrl -1
+   2004 type 3 3100 Оружие магии price 3000 qty 1 flag 11027170 qwc -1 shopType 0 mtrl -1
+   2005 type 3 3300 Волшебство: Щит магии price 3000 qty 1 flag 11027180 qwc -1 shopType 0 mtrl -1
+   2006 type 3 3520 Волшебство: Звуковая приманка price 1000 qty 1 flag 11027190 qwc -1 shopType 0 mtrl -1
+   2007 type 3 3540 Волшебство: Осторожное падение price 1500 qty 1 flag 11027200 qwc -1 shopType 0 mtrl -1
+   2008 type 2 115 Кольцо с ревущим драконом price 20000 qty 1 flag 11027210 qwc -1 shopType 0 mtrl -1
+   2009 type 2 141 Кольцо с драконом price 20000 qty 1 flag 11027220 qwc -1 shopType 0 mtrl -1
+   2010 type 0 1300000 Посох колдуна price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   2020 type 3 3040 Волшебство: Навод. сгусток души price 20000 qty 1 flag 11027230 qwc -1 shopType 0 mtrl -1
+   2021 type 3 3060 Копье души price 40000 qty 1 flag 11027240 qwc -1 shopType 0 mtrl -1
+== 2100: [Griggs of Vinheim - Initial] Soul Arrow
+   2100 type 3 3000 Волшебство: Стрела души price 2000 qty 1 flag 11607120 qwc -1 shopType 0 mtrl -1
+   2101 type 3 3020 Волшебство: Тяжелая стрела души price 4000 qty 1 flag 11607130 qwc -1 shopType 0 mtrl -1
+   2102 type 0 1300000 Посох колдуна price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 2200: [Dusk of Oolacile] Hidden Weapon
+   2200 type 3 3400 Волшебство: Невидимое оружие price 2000 qty 1 flag 11207000 qwc -1 shopType 0 mtrl -1
+   2201 type 3 3410 Волшебство: Незаметность price 2000 qty 1 flag 11207010 qwc -1 shopType 0 mtrl -1
+   2202 type 3 3500 Заклинание Света price 1000 qty 1 flag 11207020 qwc -1 shopType 0 mtrl -1
+   2203 type 3 3530 Волшебство: Починка price 10000 qty 1 flag 11207030 qwc -1 shopType 0 mtrl -1
+   2204 type 3 3550 Волшебство: Хамелеон price 3000 qty 1 flag 11207040 qwc -1 shopType 0 mtrl -1
+   2205 type 0 1305000 Костяной посох Олачиля price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 2400: [Ingward] Resist Curse
+   2400 type 3 3600 Волшебство: Сопротивл. проклятию price 5000 qty 1 flag 11607000 qwc -1 shopType 0 mtrl -1
+   2401 type 3 312 Кратковременное проклятие price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 3000: [Laurentius] Fireball
+   3000 type 3 4000 Пиромантия: Огненный шар price 800 qty 1 flag 11407030 qwc -1 shopType 0 mtrl -1
+   3001 type 3 4010 Огненная сфера price 8000 qty 1 flag 11407040 qwc -1 shopType 0 mtrl -1
+   3002 type 3 4100 Пиромантия: Поджигание price 500 qty 1 flag 11407050 qwc -1 shopType 0 mtrl -1
+   3003 type 3 4300 Железная плоть price 2000 qty 1 flag 11407060 qwc -1 shopType 0 mtrl -1
+   3004 type 3 4310 Пиромантия: Сырая плоть price 2000 qty 1 flag 11407070 qwc -1 shopType 0 mtrl -1
+== 3200: [Eingyi] Servant Roster
+   3200 type 3 112 Список слуг price 500 qty 1 flag 11407080 qwc -1 shopType 0 mtrl -1
+   3210 type 3 275 Лекарство от яиц price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   3211 type 3 4200 Пиромантия: Отравляющий туман price 10000 qty 1 flag 11407090 qwc -1 shopType 0 mtrl -1
+   3212 type 3 4210 Пиромантия: Ядовитый туман price 25000 qty 1 flag 11407100 qwc -1 shopType 0 mtrl -1
+== 3400: [Quelana of Izalith] Fireball
+   3400 type 3 4000 Пиромантия: Огненный шар price 800 qty 1 flag 11407120 qwc -1 shopType 0 mtrl -1
+   3401 type 3 4010 Огненная сфера price 8000 qty 1 flag 11407130 qwc -1 shopType 0 mtrl -1
+   3402 type 3 4020 Пиромантия: Больш. огненный шар price 20000 qty 1 flag 11407150 qwc -1 shopType 0 mtrl -1
+   3403 type 3 4030 Пиромантия: Огненный шторм price 30000 qty 1 flag 11407160 qwc -1 shopType 0 mtrl -1
+   3404 type 3 4060 Пиромантия: Огненный кнут price 10000 qty 1 flag 11407170 qwc -1 shopType 0 mtrl -1
+   3405 type 3 4100 Пиромантия: Поджигание price 500 qty 1 flag 11407140 qwc -1 shopType 0 mtrl -1
+   3406 type 3 4110 Мощное поджигание price 5000 qty 1 flag 11407180 qwc -1 shopType 0 mtrl -1
+   3407 type 3 4360 Пиромантия: Помощь нежити price 10000 qty 1 flag 11407190 qwc -1 shopType 0 mtrl -1
+== 4000: [Petrus of Thorolund] Heal
+   4000 type 3 5000 Чудо: Лечение price 4000 qty 1 flag 11027260 qwc -1 shopType 0 mtrl -1
+   4001 type 3 5020 Слова мощного лечения price 10000 qty 1 flag 11027270 qwc -1 shopType 0 mtrl -1
+   4002 type 3 5210 Возвращение price 8000 qty 1 flag 11027280 qwc -1 shopType 0 mtrl -1
+   4003 type 3 5300 Чудо: Сила price 4000 qty 1 flag 11027290 qwc -1 shopType 0 mtrl -1
+   4004 type 3 5400 Поиск помощи price 2000 qty 1 flag 11017180 qwc -1 shopType 0 mtrl -1
+   4005 type 0 1360000 Талисман price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   4006 type 0 1362000 Талисман Торолунда price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 4200: [Rhea of Thorolund] Divine Blessing
+   4200 type 3 240 Небесное благословение price 1000 qty 1 flag 11017050 qwc -1 shopType 0 mtrl -1
+   4201 type 3 5000 Чудо: Лечение price 1000 qty 1 flag 11017060 qwc -1 shopType 0 mtrl -1
+   4205 type 3 5010 Чудо: Мощное лечение price 10000 qty 1 flag 11017100 qwc -1 shopType 0 mtrl -1
+   4202 type 3 5020 Слова мощного лечения price 2000 qty 1 flag 11017070 qwc -1 shopType 0 mtrl -1
+   4203 type 3 5210 Возвращение price 1000 qty 1 flag 11017080 qwc -1 shopType 0 mtrl -1
+   4204 type 3 5300 Чудо: Сила price 1000 qty 1 flag 11017090 qwc -1 shopType 0 mtrl -1
+   4206 type 3 5310 Чудо: Гнев богов price 10000 qty 1 flag 11017110 qwc -1 shopType 0 mtrl -1
+   4207 type 3 5400 Поиск помощи price 500 qty 1 flag 11017120 qwc -1 shopType 0 mtrl -1
+   4208 type 3 5600 Чудо: Волшебный барьер price 6000 qty 1 flag 11017130 qwc -1 shopType 0 mtrl -1
+   4209 type 0 1360000 Талисман price 200 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 4400: [Oswald of Carim] Book of the Guilty
+   4400 type 3 108 Книга виновных price 1000 qty 1 flag 11607020 qwc -1 shopType 0 mtrl -1
+   4401 type 3 274 Камень Очищения price 3000 qty 5 flag 11607110 qwc -1 shopType 0 mtrl -1
+   4402 type 3 373 Обвинение price 200 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   4403 type 3 5700 Чудо: Кармическая справедливость price 40000 qty 1 flag 11607030 qwc -1 shopType 0 mtrl -1
+   4404 type 0 1367000 Талисман Велки price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   4405 type 2 109 Кольцо кровавого укуса price 10000 qty 1 flag 11607050 qwc -1 shopType 0 mtrl -1
+   4406 type 2 110 Кольцо ядовитого укуса price 15000 qty 1 flag 11607060 qwc -1 shopType 0 mtrl -1
+   4407 type 2 126 Жертвенное кольцо price 5000 qty 10 flag 11607080 qwc -1 shopType 0 mtrl -1
+   4408 type 3 330 Косточка возвращения price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 5000: [Griggs of Vinheim - Logan in DA] Soul Arrow
+   5000 type 3 3000 Волшебство: Стрела души price 1000 qty 1 flag 11707000 qwc -1 shopType 0 mtrl -1
+   5001 type 3 3010 Волшебство: Большая стрела души price 6000 qty 1 flag 11707010 qwc -1 shopType 0 mtrl -1
+   5002 type 3 3020 Волшебство: Тяжелая стрела души price 2000 qty 1 flag 11707020 qwc -1 shopType 0 mtrl -1
+   5003 type 3 3030 Волшебство: Больш. стрела души price 8000 qty 1 flag 11707030 qwc -1 shopType 0 mtrl -1
+   5004 type 3 3040 Волшебство: Навод. сгусток души price 20000 qty 1 flag 11707060 qwc -1 shopType 0 mtrl -1
+   5005 type 3 3060 Копье души price 40000 qty 1 flag 11707070 qwc -1 shopType 0 mtrl -1
+   5006 type 3 3100 Оружие магии price 3000 qty 1 flag 11707040 qwc -1 shopType 0 mtrl -1
+   5007 type 3 3300 Волшебство: Щит магии price 3000 qty 1 flag 11707050 qwc -1 shopType 0 mtrl -1
+   5020 type 3 3050 Волшебство: Крист. сгусток души price 30000 qty 1 flag 11707090 qwc -1 shopType 0 mtrl -1
+   5021 type 3 3070 Волшебство: Крист. копье души price 50000 qty 1 flag 11707100 qwc -1 shopType 0 mtrl -1
+   5022 type 3 3120 Волшебство: Крист. оружие магии price 20000 qty 1 flag 11707110 qwc -1 shopType 0 mtrl -1
+== 6100: [Darkstalker Kaathe] Cracked Red Eye Orb
+   6100 type 3 111 Треснувшее красное око price 3000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 6200: [Giant Blacksmith] Giant's Halberd
+   6200 type 0 1101000 Великанская алебарда price 5000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6201 type 0 1502000 Великанский щит price 10000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6202 type 0 2005000 Лунная стрела price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6203 type 0 2007000 Стрела драконоборца price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6204 type 0 2000000 Обычная стрела price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6205 type 0 2001000 Длинная стрела price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6206 type 0 2002000 Длинноперая стрела price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6207 type 0 2104000 Болт молнии price 700 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6208 type 0 2100000 Обычный болт price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6209 type 0 2101000 Тяжелый болт price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6210 type 0 2102000 Меткий болт price 250 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6211 type 1 530000 Шлем великана price 6000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6212 type 1 531000 Доспех великана price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6213 type 1 532000 Наручи великана price 6000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6214 type 1 533000 Поножи великана price 6000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6215 type 3 2600 Оружейный ящик кузнеца price 2000 qty 1 flag 11017150 qwc -1 shopType 0 mtrl -1
+   6216 type 3 2601 Доспешный ящик кузнеца price 2000 qty 1 flag 11017160 qwc -1 shopType 0 mtrl -1
+   6217 type 3 2602 Ремонтный ящик price 2000 qty 1 flag 11017170 qwc -1 shopType 0 mtrl -1
+   6218 type 3 1000 Осколок титанита price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6219 type 3 1010 Больш. оск. титанита price 3800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6220 type 3 1020 Оск. зел. титанита price 4800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6221 type 3 1130 Мерцающий титанит price 8000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 6300: [Vamos] Homeward Bone
+   6300 type 3 330 Косточка возвращения price 500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6301 type 3 1000 Осколок титанита price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6302 type 3 2600 Оружейный ящик кузнеца price 2000 qty 1 flag 11017150 qwc -1 shopType 0 mtrl -1
+   6303 type 3 2601 Доспешный ящик кузнеца price 2000 qty 1 flag 11017160 qwc -1 shopType 0 mtrl -1
+   6304 type 3 2602 Ремонтный ящик price 2000 qty 1 flag 11017170 qwc -1 shopType 0 mtrl -1
+   6305 type 0 2000000 Обычная стрела price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6306 type 0 2001000 Длинная стрела price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6307 type 0 2006000 Деревянная стрела price 3 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6308 type 0 2100000 Обычный болт price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6309 type 0 2101000 Тяжелый болт price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6310 type 0 2103000 Деревянный болт price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 6410: [Marvellous Chester] Green Blossom
+   6410 type 3 260 Зеленый цветок price 1200 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6411 type 3 270 Заросли красного мха price 400 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6412 type 3 271 Заросли фиолетового мха price 600 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6413 type 3 272 Заросли цветущего фиол. мха price 1500 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6414 type 3 290 Метательный нож price 30 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6415 type 3 292 Огненная бомба price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6416 type 3 294 Красивый череп price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6417 type 3 296 Талисман Ллойда price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6418 type 3 297 Черн. огнен. бомба price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6419 type 3 330 Косточка возвращения price 600 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6420 type 3 500 Человечность price 10000 qty 13 flag 11217100 qwc -1 shopType 0 mtrl -1
+   6421 type 0 2000000 Обычная стрела price 20 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6422 type 0 2001000 Длинная стрела price 100 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6423 type 0 2002000 Длинноперая стрела price 200 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6424 type 0 2100000 Обычный болт price 50 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6425 type 0 2101000 Тяжелый болт price 150 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6426 type 0 2102000 Меткий болт price 400 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 6500: [Elizabeth] Repair Powder
+   6500 type 3 280 Порошок для починки price 300 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6501 type 3 311 Золотая смола price 1000 qty 6 flag 11217000 qwc -1 shopType 0 mtrl -1
+   6502 type 3 3400 Волшебство: Невидимое оружие price 2000 qty 1 flag 11207000 qwc -1 shopType 0 mtrl -1
+   6503 type 3 3410 Волшебство: Незаметность price 2000 qty 1 flag 11207010 qwc -1 shopType 0 mtrl -1
+   6504 type 3 3500 Заклинание Света price 1000 qty 1 flag 11207020 qwc -1 shopType 0 mtrl -1
+   6505 type 3 3530 Волшебство: Починка price 10000 qty 1 flag 11207030 qwc -1 shopType 0 mtrl -1
+   6506 type 3 3550 Волшебство: Хамелеон price 3000 qty 1 flag 11207040 qwc -1 shopType 0 mtrl -1
+   6507 type 0 1305000 Костяной посох Олачиля price 1000 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 6600: [Hawkeye Gough] Dung Pie
+   6600 type 3 293 Навозный пирог price 200 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6601 type 3 330 Косточка возвращения price 300 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6602 type 3 370 Радужный камень price 10 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6603 type 3 510 Знак "Здравствуй" price 5 qty 1 flag 11217010 qwc -1 shopType 0 mtrl -1
+   6604 type 3 511 Знак "Спасибо" price 5 qty 1 flag 11217020 qwc -1 shopType 0 mtrl -1
+   6608 type 3 1000 Осколок титанита price 800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6609 type 3 1010 Больш. оск. титанита price 3800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6610 type 3 1020 Оск. зел. титанита price 4800 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+   6611 type 0 2008000 Большая стрела Гоха price 650 qty -1 flag -1 qwc -1 shopType 0 mtrl -1
+== 10000: [Attunement] Soul Arrow
+   10000 type 4 3000 Стрела души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3000
+   10001 type 4 3010 Большая стрела души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3010
+   10002 type 4 3020 Тяжелая стрела души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3020
+   10003 type 4 3030 Большая тяжелая стрела души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3030
+   10004 type 4 3040 Наводящийся сгусток души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3040
+   10005 type 4 3050 Кристальный сгусток души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3050
+   10008 type 4 3060 Копье души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3060
+   10009 type 4 3070 Кристальное копье души price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3070
+   10010 type 4 3100 Оружие магии price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3100
+   10011 type 4 3110 Большое оружие магии price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3110
+   10012 type 4 3120 Кристальное оружие магии price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3120
+   10013 type 4 3300 Щит магии price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3300
+   10014 type 4 3310 Крепкий щит магии price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3310
+   10015 type 4 3400 Невидимое оружие price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3400
+   10016 type 4 3410 Незаметность price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3410
+   10017 type 4 3500 Заклинание Света price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3500
+   10018 type 4 3510 Бесшумность price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3510
+   10019 type 4 3520 Звуковая приманка price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3520
+   10020 type 4 3530 Починка price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3530
+   10021 type 4 3540 Осторожное падение price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3540
+   10022 type 4 3550 Хамелеон price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3550
+   10023 type 4 3600 Сопротивление проклятию price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3600
+   10024 type 4 3610 Исцеление price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3610
+   10025 type 4 3700 Дыхание белого дракона price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3700
+   10026 type 4 4000 Огненный шар price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4000
+   10027 type 4 4010 Огненная сфера price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4010
+   10028 type 4 4020 Большой огненный шар price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4020
+   10029 type 4 4030 Огненный шторм price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4030
+   10030 type 4 4040 Огненная буря price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4040
+   10031 type 4 4050 Огненная струя price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4050
+   10034 type 4 4060 Кнут огня price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4060
+   10035 type 4 4100 Поджигание price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4100
+   10036 type 4 4110 Мощное поджигание price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4110
+   10037 type 4 4200 Отравляющий туман price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4200
+   10038 type 4 4210 Ядовитый туман price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4210
+   10039 type 4 4220 Кислотная струя price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4220
+   10040 type 4 4300 Железная плоть price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4300
+   10041 type 4 4310 Сырая плоть price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4310
+   10042 type 4 4360 Помощь нежити price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4360
+   10043 type 4 4400 Внутренняя сила price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4400
+   10044 type 4 4500 Большой огненный шар Хаоса price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4500
+   10045 type 4 4510 Шторм Хаоса price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4510
+   10046 type 4 4520 Огненный кнут Хаоса price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4520
+   10047 type 4 5000 Лечение price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5000
+   10048 type 4 5010 Мощное лечение price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5010
+   10049 type 4 5020 Слова мощного лечения price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5020
+   10050 type 4 5030 Успокаивающий Свет price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5030
+   10051 type 4 5040 Восстановление price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5040
+   10052 type 4 5050 Изобильный Свет price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5050
+   10053 type 4 5100 Танец меча Нито price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5100
+   10054 type 4 5110 Танец большого меча Нито price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5110
+   10055 type 4 5200 Уход от смерти price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5200
+   10056 type 4 5210 Возвращение price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5210
+   10057 type 4 5300 Сила price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5300
+   10058 type 4 5310 Гнев богов price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5310
+   10059 type 4 5320 Силовая волна price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5320
+   10060 type 4 5400 Поиск помощи price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5400
+   10061 type 4 5500 Копье молнии price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5500
+   10062 type 4 5510 Большое копье молнии price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5510
+   10063 type 4 5520 Копье Света price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5520
+   10064 type 4 5600 Волшебный барьер price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5600
+   10065 type 4 5610 Большой волшебный барьер price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5610
+   10066 type 4 5700 Кармическая справедливость price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5700
+   10068 type 4 5800 Медленная мирная прогулка price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5800
+   10069 type 4 5810 Обет молчания price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5810
+   10070 type 4 5900 Клинок Света price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5900
+   10071 type 4 5910 Клинок Темной Луны price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 5910
+   10072 type 4 3710 Сфера Тьмы price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3710
+   10073 type 4 3720 Шар Тьмы price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3720
+   10074 type 4 3730 Туман Тьмы price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3730
+   10075 type 4 3740 Преследователи price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 3740
+   10076 type 4 4530 Черное пламя price 0 qty -1 flag -1 qwc -1 shopType 2 mtrl 4530
