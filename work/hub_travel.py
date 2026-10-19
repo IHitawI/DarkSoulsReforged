@@ -20,10 +20,10 @@ REQUEST_BASE = 11028200      # request flag per bonfire, 11028200..298. Was 1102
                              # Control is 11027200 - buying it would have warped you). 11028xxx: the game uses none.
 UNLOCK_REQUEST = 11028299    # debug "unlock all bonfires": set here, the flags themselves are set by UNLOCK_EVENT
 UNLOCK_EVENT = 11027899      # after the bonfire menu has closed (setting them from the menu locked it up)
-# Leaving the bonfire before an event warp: close the menu AND stand up, like "Leave" does. L12 is the exit
-# after the vanilla warp menu, where the engine moves the player itself; used for an event warp it left the
-# player sitting with no menu - stuck at the bonfire.
-STAND_UP = ['ForceEndTalk(0)', 'ClearTalkProgressData()', 'CloseShopMessage()', 'EndBonfireKindleAnimLoop()', "Goto('L1')"]
+# Leaving the bonfire before the DLL warps: L1 is the dialog's own "end talk, close the list, stand up" state
+# (what walking away does). L12, the exit after the vanilla warp menu, leaves the player sitting - stuck at the
+# bonfire when the warp is not the engine's own.
+STAND_UP = ["Goto('L1')"]
 FLAG_SPACE = 99              # bonfires that fit: requests 11028200..298
 TEXT_BASE = 15009200         # Event_text ids: menu entry, zones, bonfires
 MENU_SLOT = 14

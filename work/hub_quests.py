@@ -134,17 +134,15 @@ def crestfallen(src):
     i8, i12, i16, i20 = ' ' * 8, ' ' * 12, ' ' * 16, ' ' * 20
     near = 'GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer() <= 2'
     alive = f'not GetEventFlag({hub_talks.CRESTFALLEN_HOSTILE}) and not GetEventFlag({hub_talks.CRESTFALLEN_DEAD})'
-    # "Talk" lets one press through to his own dialog: PASS on -> the press (talking) marks USED -> his
-    # dialog -> the talk is over (not talking, USED) -> both off, the menu answers again. Walking away resets
-    # too. (PASS alone reset only at 4 m, and he sits by the bonfire: his line kept repeating.)
+    # "Talk" lets one press through to his own dialog: PASS on -> his dialog (every one of his lines sets USED
+    # right before it, see the end) -> the talk is over (USED, not talking) -> both off, the menu answers
+    # again. Walking away resets too. (PASS alone reset only at 4 m, and he sits by the bonfire: his line
+    # kept repeating.)
     L = [f'{i8}elif GetEventFlag({PASS_FLAG}) and (GetDistanceToPlayer() > 4 or',
          f'{i8}      (GetEventFlag({USED_FLAG}) and IsPlayerTalkingToMe() == 0)):',
          f'{i12}# FirelinkHub: his own dialog is over: the menu answers again',
          f'{i12}SetEventFlag({PASS_FLAG}, FlagState.Off)',
          f'{i12}SetEventFlag({USED_FLAG}, FlagState.Off)',
-         f'{i12}continue',
-         f'{i8}elif GetEventFlag({PASS_FLAG}) and not GetEventFlag({USED_FLAG}) and IsPlayerTalkingToMe() == 1:',
-         f'{i12}SetEventFlag({USED_FLAG}, FlagState.On)',
          f'{i12}continue',
          f'{i8}elif (IsPlayerTalkingToMe() == 1 and {near} and GetOneLineHelpStatus()',
          f'{i8}      and not GetEventFlag({PASS_FLAG}) and {alive}):',
@@ -171,6 +169,7 @@ def crestfallen(src):
          f'{i20}CloseShopMessage()',
          f'{i20}break',
          f'{i16}elif GetTalkListEntryResult() == 1:',
+         f'{i20}SetEventFlag({USED_FLAG}, FlagState.Off)',
          f'{i20}SetEventFlag({PASS_FLAG}, FlagState.On)',
          f'{i20}ForceEndTalk(0)',
          f'{i20}CloseShopMessage()',
@@ -180,4 +179,10 @@ def crestfallen(src):
     L.append(f'{i16}elif GetTalkListEntryResult() == 3:')
     L += _bounties(i20)
     L.append(f'{i12}continue')
-    return hub_talks._insert(src, NL.join(L) + NL)
+    src = hub_talks._insert(src, NL.join(L) + NL)
+    out = []
+    for line in src.split(NL):            # his lines mark USED: "a talk of his own has happened"
+        if line.lstrip().startswith('TalkToPlayer('):
+            out.append(line[:len(line) - len(line.lstrip())] + f'SetEventFlag({USED_FLAG}, FlagState.On)')
+        out.append(line)
+    return NL.join(out)
