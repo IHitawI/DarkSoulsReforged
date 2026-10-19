@@ -1,11 +1,12 @@
 """Second boss phase: at half HP the boss stops for a moment in a Wrath of the Gods burst and comes back changed.
 
-The burst (2.5 s of invincibility) is the telegraph; the boss gets a second health bar (full HP again, the bar
-renamed "<boss> - second phase") and keeps an aura for the rest of the fight:
+The burst (2.5 s of invincibility) is the telegraph; the boss heals back to 60-70% (HEAL_TO: early bosses 60,
+late ones 70), the bar is renamed "<boss> - second phase", and it keeps an aura for the rest of the fight:
   rage    - +15% damage: the beasts and demons.
   abyss   - every hit drains 40 stamina and stops its regen for 2 s: Sif, Artorias, Manus, Seath.
   vampire - every hit heals it by 3% of its HP: Priscilla, Pinwheel, Nito.
-In phase 2 every boss takes 25% more damage, so the full second bar goes faster (fight ~1.3x vanilla).
+The fight is ~1.1-1.2x vanilla: the old full heal (+25% damage taken) on top of Seamless Co-op's boss HP per player
+made co-op bosses ~6x vanilla.
 Bosses with a second phase of their own are left alone (Gargoyles, O&S, Four Kings, Bed of Chaos),
 as is the tutorial Asylum Demon.
 The event runs in the boss's map, restarts with the map (so a retry gets phase 1 again) and ends when the
@@ -47,8 +48,10 @@ BOSSES = [  # map, defeat flag, boss entity, phase
 MAPS = sorted({m for m, *_ in BOSSES})
 
 
-TAKEN_RATE = 1.25               # damage taken in phase 2
-FULL_HEAL = 92730              # the second health bar: back to full HP
+HEAL_BASE = 92730              # SpEffect 92730+k: heal boss k from 50% to HEAL_TO
+HEAL_TO = {1210800: 70, 1210820: 70, 1210840: 70, 1700800: 70, 1800800: 70, 1310800: 70,   # late
+           1200800: 65, 1100160: 65, 1400800: 65, 1500800: 65, 1410700: 65, 1410400: 65,   # mid
+           1410600: 65, 1210401: 65, 1810810: 65}                    # everyone else (early bosses): 60
 PHASE_NAME_BASE = 9850         # NpcName: "<boss> - second phase", shown on the bar in phase 2
 BARS = {}                      # boss entity -> (bar slot, vanilla name id), from the vanilla map events
 TEXT = {}                      # item.msgbnd: ('npcname', id) -> {'ru', 'en'}
@@ -83,11 +86,12 @@ def apply(game):
         _, nid = BARS[boss]
         TEXT[('npcname', PHASE_NAME_BASE + k)] = {'ru': f"{names['ru'][nid]} — вторая фаза",
                                                   'en': f"{names['en'][nid]} - Second Phase"}
-    full = sp.add(FULL_HEAL, sp[1980], b'[Boss phase 2] full heal')    # applies once, at the start
-    sl.set(full, 'changeHpRate', -100.0)
-    sl.set(full, 'stateInfo', 0)
-    for f in [k for k in sl.slots if k.startswith('effectTarget')]:
-        sl.set(full, f, sl.get(sp[71100], f))                          # self / AI, like NpcParam passives
+    for k, (_, _, boss, _) in enumerate(BOSSES):
+        e = sp.add(HEAL_BASE + k, sp[1980], b'[Boss phase 2] heal')      # applies once, at the start
+        sl.set(e, 'changeHpRate', -float(HEAL_TO.get(boss, 60) - 50))     # % of max HP, negative = heal
+        sl.set(e, 'stateInfo', 0)
+        for f in [k for k in sl.slots if k.startswith('effectTarget')]:
+            sl.set(e, f, sl.get(sp[71100], f))                           # self / AI, like NpcParam passives
     attacker = {k: sl.get(sp[2241], k) for k in sl.slots if k.startswith('effectTarget')}
     heal = sp.add(VAMPIRE_HEAL, sp[1980], b'[Boss phase 2] vampire heal')
     sl.set(heal, 'changeHpRate', -3.0)
@@ -101,10 +105,6 @@ def apply(game):
         rate = 1.15 if phase == 'rage' else 1.0          # abyss / vampire: their trait is the threat
         for f in ('physicsAttackPowerRate', 'magicAttackPowerRate', 'fireAttackPowerRate', 'thunderAttackPowerRate'):
             sl.set(e, f, rate)
-        # the second bar is a full one, but it melts 25% faster: the fight is ~1.3x the vanilla one, not 2x
-        for f in ('slashDamageCutRate', 'blowDamageCutRate', 'thrustDamageCutRate', 'neutralDamageCutRate',
-                  'magicDamageCutRate', 'fireDamageCutRate', 'thunderDamageCutRate'):
-            sl.set(e, f, TAKEN_RATE)
         sl.set(e, 'stateInfo', {'rage': hub_elites.VFX_RAGE, 'abyss': 205, 'vampire': 48}[phase])
         if phase == 'abyss':
             sl.set(e, 'atkOccurrenceSpEffectId', abyss_drain)
@@ -120,7 +120,7 @@ def phase_event(edf, k, flag, boss, phase):
         _ins(edf, 2004, 15, boss, 1),                  # invincible during the burst
         _ins(edf, 2006, 3, 2, boss, -1, BURST_SFX),
         _ins(edf, 2006, 3, 2, PLAYER, 220, BURST_SFX),  # on the player too: bosses lack the dummies, players don't
-        _ins(edf, 2004, 8, boss, FULL_HEAL),           # second health bar: full again ...
+        _ins(edf, 2004, 8, boss, HEAL_BASE + k),       # back to HEAL_TO ...
         _ins(edf, 2003, 11, 1, boss, slot, PHASE_NAME_BASE + k),   # ... named "<boss> - second phase"
         _ins(edf, 2004, 8, boss, PHASE_SP[phase]),
         _ins(edf, 1001, 0, INVINCIBLE),

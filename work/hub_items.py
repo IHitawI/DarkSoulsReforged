@@ -19,6 +19,7 @@ LIFEGEMS = [
      'почти мгновенно', 'almost instantly'),
 ]
 PRICE = {g[0]: g[5] for g in LIFEGEMS}
+CARRY = {600: 10, 601: 5, 602: 3, 604: 5, 605: 3, 606: 2}   # how many fit in the inventory: a stock, not a spam heal
 LIFEGEM_LORE = {
     600: ('Камень, в котором теплится жизнь.\nЕго приносят в Лордран странники,\nне желающие полагаться на один Эстус.',
           'A stone in which life still glows.\nWanderers bring them to Lordran,\nunwilling to rely on Estus alone.'),
@@ -88,13 +89,14 @@ def apply():
         gl.set(g, 'sortId', sort)
         gl.set(g, 'sellValue', sell)
         gl.set(g, 'useLimitCategory', 0)   # the Mushroom's 2 blocks it while Magic Barrier & co. are active
+        gl.set(g, 'maxNum', CARRY[gid])
         total = round(tick_hp * secs / tick)
         lore_ru, lore_en = LIFEGEM_LORE[gid]
         text('name', gid, ru, en)
         text('info', gid, f'Восстанавливает {total} HP ({ru_speed}).', f'Restores {total} HP ({en_speed}).')
         text('caption', gid,
-             f'{lore_ru}\n\nВосстанавливает {total} HP за {secs} сек.\nНе прерывается при получении урона.',
-             f'{lore_en}\n\nRestores {total} HP over {secs} seconds.\nNot interrupted by taking damage.')
+             f'{lore_ru}\n\nВосстанавливает {total} HP за {secs} сек.\nНе прерывается при получении урона.\nС собой — не больше {CARRY[gid]}.',
+             f'{lore_en}\n\nRestores {total} HP over {secs} seconds.\nNot interrupted by taking damage.\nCarry at most {CARRY[gid]}.')
 
     # --- amber herbs
     e = sp.add(HERB_SP, sp[3040], b'[Item] Amber Herb - marker')
@@ -111,15 +113,17 @@ def apply():
         gl.set(g, 'isDrop', 0)       # the DLL counts herbs in the inventory: no dropping
         gl.set(g, 'isDeposit', 0)    # ...and no storing in the Bottomless Box
         gl.set(g, 'useLimitCategory', 0)   # Green Blossom's 2 blocks it during most miracle buffs
+        gl.set(g, 'maxNum', CARRY[gid])
         text('name', gid, ru, en)
         text('info', gid, f'Восстанавливает {pct}% зарядов заклинаний.', f'Restores {pct}% of spell uses.')
         text('caption', gid,
              'Янтарная трава с терпким запахом.\nЖуют её те, кто полагается на чары,\nкогда до костра ещё далеко.\n\n'
-             f'Восстанавливает каждому настроенному\nзаклинанию {pct}% зарядов (минимум 1).\n'
-             'Траву нельзя выбросить или убрать в шкатулку.',
+             f'Восстанавливает каждому настроенному\nзаклинанию {pct}% зарядов, с округлением вниз\n'
+             '(минимум 1, если зарядов три и больше).\n'
+             f'С собой — не больше {CARRY[gid]}. Траву нельзя\nвыбросить или убрать в шкатулку.',
              'An amber herb with a sharp scent.\nChewed by those who rely on sorcery\nwhen the next bonfire is far away.\n\n'
-             f'Restores {pct}% of the uses of every\nattuned spell (at least 1).\n'
-             'Cannot be dropped or stored.')
+             f'Restores {pct}% of the uses of every\nattuned spell, rounded down\n(at least 1 for spells with 3+ uses).\n'
+             f'Carry at most {CARRY[gid]}. Cannot be dropped or stored.')
 
     # --- coins: crush for more souls from kills
     for gid, spid, mult, pct in COINS:

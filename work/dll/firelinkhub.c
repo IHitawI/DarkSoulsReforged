@@ -108,8 +108,8 @@ static void restore_spells(ULONG_PTR pgd, int percent) {
         if (id <= 0) continue;
         int mx = max_uses(id);
         if (mx <= 0) continue;
-        int add = (mx * percent + 50) / 100;          /* whole casts, rounded */
-        if (add < 1) add = 1;
+        int add = mx * percent / 100;                 /* whole casts, rounded down */
+        if (add < 1 && mx >= 3) add = 1;              /* 1-2 cast spells: only what the share gives */
         int now = stored + add * USES_UNIT, cap = mx * USES_UNIT;
         if (now > cap) now = cap;
         if (now != stored) {
