@@ -63,7 +63,7 @@ def stats(value):
 
 
 def _leave_talk():
-    return ['ForceEndTalk(0)', 'ClearTalkProgressData()', 'CloseShopMessage()', "Goto('L12')"]
+    return hub_travel.STAND_UP
 
 
 def _warp_menu(travel):

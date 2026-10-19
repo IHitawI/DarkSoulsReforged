@@ -18,6 +18,10 @@ REQUEST_BASE = 11027200      # request flag per bonfire, 11027200..298 (was 1102
                              # bonfires it ran into the Yulia quest flags 11027903/904 - her quest warped you)
 UNLOCK_REQUEST = 11027299    # debug "unlock all bonfires": set here, the flags themselves are set by UNLOCK_EVENT
 UNLOCK_EVENT = 11027899      # after the bonfire menu has closed (setting them from the menu locked it up)
+# Leaving the bonfire before an event warp: close the menu AND stand up, like "Leave" does. L12 is the exit
+# after the vanilla warp menu, where the engine moves the player itself; used for an event warp it left the
+# player sitting with no menu - stuck at the bonfire.
+STAND_UP = ['ForceEndTalk(0)', 'ClearTalkProgressData()', 'CloseShopMessage()', 'EndBonfireKindleAnimLoop()', "Goto('L1')"]
 FLAG_SPACE = 99              # bonfires that fit: events 11027800.., requests 11027200..
 TEXT_BASE = 15009200         # Event_text ids: menu entry, zones, bonfires
 MENU_SLOT = 14
@@ -115,8 +119,7 @@ def patch_bonfire(src, bfs):
         for slot, (k, fl) in enumerate(mine, 1):
             L += [f'{i24}            elif GetTalkListEntryResult() == {slot}:',
                   f'{i24}                SetEventFlag({REQUEST_BASE + k}, FlagState.On)',
-                  f'{i24}                ForceEndTalk(0)', f'{i24}                ClearTalkProgressData()',
-                  f'{i24}                CloseShopMessage()', f"{i24}                Goto('L12')"]
+                  *[f'{i24}                {l}' for l in STAND_UP]]
     anchor_branch = f'\n{i20}elif GetTalkListEntryResult() == 1:\n'   # line start: nested menus have deeper ones
     assert src.count(anchor_branch) == 1
     return src.replace(anchor_branch, '\n' + '\n'.join(L) + anchor_branch)
