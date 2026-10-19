@@ -14,7 +14,11 @@ from emevd import Emevd, decode_args, build as build_emevd
 
 LORDVESSEL = 710
 EVENT_BASE = 11027800        # one event per bonfire
-REQUEST_BASE = 11027850      # request flag per bonfire
+REQUEST_BASE = 11027200      # request flag per bonfire, 11027200..298 (was 11027850..: with the 11 restored
+                             # bonfires it ran into the Yulia quest flags 11027903/904 - her quest warped you)
+UNLOCK_REQUEST = 11027299    # debug "unlock all bonfires": set here, the flags themselves are set by UNLOCK_EVENT
+UNLOCK_EVENT = 11027899      # after the bonfire menu has closed (setting them from the menu locked it up)
+FLAG_SPACE = 99              # bonfires that fit: events 11027800.., requests 11027200..
 TEXT_BASE = 15009200         # Event_text ids: menu entry, zones, bonfires
 MENU_SLOT = 14
 
@@ -124,6 +128,7 @@ def patch_common(data, edf, bfs):
         from emevd import encode_args
         _, args = edf.instr[(bank, iid)]
         return (bank, iid, encode_args(vals, [t for _, t in args]))
+    assert len(bfs) <= FLAG_SPACE, len(bfs)
     ev = Emevd(data)
     e0 = next(e for e in ev.events if e['id'] == 0)
     starts = []
@@ -136,5 +141,11 @@ def patch_common(data, edf, bfs):
             ins(2003, 14, area, block, ent + 1000),     # to that map, onto the bonfire's spawn point
             ins(1000, 4, 1)]})                         # and wait again
         starts.append(ins(2000, 0, 0, EVENT_BASE + k, 0))
+    ev.events.append({'id': UNLOCK_EVENT, 'rest': 0, 'params': [], 'ins': [
+        ins(3, 0, 0, 1, 0, UNLOCK_REQUEST),
+        ins(1001, 0, 1.0)]                                              # the bonfire menu is closed by now
+        + [ins(2003, 2, fl, 1) for _, fl, _ in bfs] + [ins(2003, 2, LORDVESSEL, 1)]
+        + [ins(2003, 2, UNLOCK_REQUEST, 0), ins(1000, 4, 1)]})
+    starts.append(ins(2000, 0, 0, UNLOCK_EVENT, 0))
     e0['ins'][0:0] = starts
     return build_emevd(ev)

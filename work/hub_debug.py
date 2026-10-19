@@ -10,7 +10,9 @@ list of ESD lines, a submenu (list of entries) or None (back). `ru` may be an ex
 Why "unlock all bonfires" did not work before: it lit an old list of 44 bonfires (none of the restored
 ones), the fast travel entry also needs the Lordvessel flag (710), and the old warp used the vanilla
 warp menu (21 bonfires). Now: all lit flags + 710, and the warp goes through fast travel's own request
-flags (common.emevd), which do not care whether the bonfire is lit.
+flags (common.emevd), which do not care whether the bonfire is lit. Setting all the lit flags from the open
+bonfire menu locked the player at the bonfire, so the menu only sets hub_travel.UNLOCK_REQUEST, closes, and
+an event in common.emevd sets the flags a second later.
 """
 from hub_npc_esd import BELL1_FLAG, MOVED_FLAG, GREETED_FLAG
 from hub_npcs import NPCS, LARGE_EMBER_GIVEN, GIANT_GATE
@@ -37,6 +39,8 @@ TOOLS = {2600: 1, 2601: 1, 2602: 1, 2607: 1, 2608: 1}   # smithboxes, repairbox,
 KEYS = {i: 1 for i in list(range(2001, 2023)) + [2100, 2510]}   # every key, the Master Key, the Lordvessel
 COVENANT = {109: 30, 374: 30, 375: 30, 1110: 30}   # Eye of Death, Souvenir of Reprisal, Sunlight Medal, Dragon Scale
 RINGS = {128: 1, 100: 1, 143: 1}                  # Dark Wood Grain (the combo ring), Havel's, Favor and Protection
+# ChangePlayerStat sets the number only: HP, stamina and attunement slots stay as they were (a Cleric with
+# Attunement 99 showed 1 slot and 594 HP) until something recomputes them - a level up at the bonfire.
 STAT_NAMES = ('Vitality', 'Attunement', 'Endurance', 'Strength', 'Dexterity', 'Intelligence', 'Faith')   # no Resistance in DSR's ESD
 YULIA_FLAGS = [hub_yulia.IAITO_FLAG, hub_yulia.UCHI_FLAG, hub_yulia.FOUND_FLAG]
 EXTRA_BOSSES = [(11010001, 'Горгульи колокола', 'Bell Gargoyles'), (GIANT_GATE, 'Орнштейн и Смоуг', 'Ornstein and Smough')]
@@ -92,12 +96,12 @@ def _boss_menus():
 
 def setup(travel):
     """Builds MENU and its texts from the mod's lists. build.py calls it after TRAVEL is known."""
-    lit = [fl for _, fl, _ in travel]
     bosses1, bosses2 = _boss_menus()
     champs = range(len(hub_champions.CHAMPIONS))
     MENU[:] = [
         (1, 'Костры и перемещение', 'Bonfires and travel', [
-            (1, 'Открыть все костры (и «Путешествие»)', 'Unlock all bonfires (and Travel)', flags(lit + [LORDVESSEL], True)),
+            (1, 'Открыть все костры (и «Путешествие»)', 'Unlock all bonfires (and Travel)',
+             flags([hub_travel.UNLOCK_REQUEST], True) + _leave_talk()),
             (2, 'Телепорт к любому костру', 'Warp to any bonfire', _warp_menu(travel)),
             (3, 'Телепорт к чемпиону этой зоны', 'Warp to the champion here',
              flags([hub_champions.WARP_REQUEST], True) + _leave_talk()),
@@ -107,9 +111,9 @@ def setup(travel):
         (2, 'Персонаж', 'Character', [
             (1, '+100 000 душ', '+100,000 souls', ['ChangePlayerStat(PlayerStat.SoulsCollected, ChangeType.Add, 100000)']),
             (2, '+1 000 000 душ', '+1,000,000 souls', ['ChangePlayerStat(PlayerStat.SoulsCollected, ChangeType.Add, 1000000)']),
-            (3, 'Характеристики 40 (кроме Сопротивления)', 'Stats 40 (not Resistance)', stats(40)),
-            (4, 'Характеристики 99 (кроме Сопротивления)', 'Stats 99 (not Resistance)', stats(99)),
-            (5, 'Магия: Настр. 40, Инт. 40, Вера 50', 'Magic: Att 40, Int 40, Fth 50',
+            (3, 'Характеристики 40 — потом подними уровень', 'Stats 40 - then level up once', stats(40)),
+            (4, 'Характеристики 99 — потом подними уровень', 'Stats 99 - then level up once', stats(99)),
+            (5, 'Магия: Настр. 40, Инт. 40, Вера 50 — потом подними уровень', 'Magic: Att 40, Int 40, Fth 50 - then level up',
              [f'ChangePlayerStat(PlayerStat.{s}, ChangeType.Set, {v})' for s, v in
               (('Attunement', 40), ('Intelligence', 40), ('Faith', 50))]),
             (6, 'Режим бога: урон по тебе ×0.05 (30 мин)', 'God mode: damage taken x0.05 (30 min)',
@@ -153,7 +157,7 @@ def setup(travel):
             (3, 'Отметить всех чемпионов убитыми', 'Mark all champions killed', flags([hub_champions.event_id(k) for k in champs], True)),
             (4, 'Поручения: сбросить', 'Bounties: reset', flags([hub_quests.REWARD_FLAG + i for i in range(len(hub_quests.BOUNTIES))], False)),
             (5, 'Советы воина: сбросить', "Warrior's advice: reset",
-             flags([hub_quests.TIP_FLAG + i for i in range(len(hub_quests.TIPS))] + [hub_quests.PASS_FLAG], False)),
+             flags([hub_quests.TIP_FLAG + i for i in range(len(hub_quests.TIPS))] + [hub_quests.PASS_FLAG, hub_quests.USED_FLAG], False)),
             (99, 'Назад', 'Back', None),
         ]),
         (7, 'NPC и сюжет', 'NPCs and story', [

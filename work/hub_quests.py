@@ -1,7 +1,7 @@
 """Hub quests and advice: the Crestfallen Warrior by the Firelink bonfire (t102627) gets a menu.
 
 Talking to him opens it:
-  Talk     - his own story lines (the vanilla dialog runs on the next "Talk" press; walking away re-arms the menu);
+  Talk     - his own story lines (the vanilla dialog answers the next press, once; then the menu is back);
   Advice   - one tip about the mod per ask, in turn (estus, champions, phases, respec, travel, ...);
   Bounties - he names one champion (hub_champions) at a time, in story order; once it is dead (its event flag =
              "killed") asking again pays the reward and names the next one.
@@ -15,6 +15,7 @@ ADVICE_BASE = 15009440        # Event_text: menu entry, the tips, "that's all"
 REWARD_FLAG = 11027100        # 11027100.. "bounty k paid"
 TIP_FLAG = 11027120           # 11027120.. "tip k told"
 PASS_FLAG = 11027119          # "Talk" chosen: let his own dialog answer the next press
+USED_FLAG = 11027118          # ... and that press came: once the talk is over, PASS goes off
 ZONES_RU = {'m10_01_00_00': 'Уезд нежити, в нефе церкви', 'm10_00_00_00': 'Глубины',
             'm14_00_00_00': 'Чумной город', 'm12_00_00_00': 'Сад Тёмных корней',
             'm15_00_00_00': 'Крепость Сена', 'm13_00_00_00': 'Катакомбы',
@@ -133,9 +134,17 @@ def crestfallen(src):
     i8, i12, i16, i20 = ' ' * 8, ' ' * 12, ' ' * 16, ' ' * 20
     near = 'GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer() <= 2'
     alive = f'not GetEventFlag({hub_talks.CRESTFALLEN_HOSTILE}) and not GetEventFlag({hub_talks.CRESTFALLEN_DEAD})'
-    L = [f'{i8}elif GetEventFlag({PASS_FLAG}) and GetDistanceToPlayer() > 4:',
-         f'{i12}# FirelinkHub: walked away after "Talk": the menu answers again',
+    # "Talk" lets one press through to his own dialog: PASS on -> the press (talking) marks USED -> his
+    # dialog -> the talk is over (not talking, USED) -> both off, the menu answers again. Walking away resets
+    # too. (PASS alone reset only at 4 m, and he sits by the bonfire: his line kept repeating.)
+    L = [f'{i8}elif GetEventFlag({PASS_FLAG}) and (GetDistanceToPlayer() > 4 or',
+         f'{i8}      (GetEventFlag({USED_FLAG}) and IsPlayerTalkingToMe() == 0)):',
+         f'{i12}# FirelinkHub: his own dialog is over: the menu answers again',
          f'{i12}SetEventFlag({PASS_FLAG}, FlagState.Off)',
+         f'{i12}SetEventFlag({USED_FLAG}, FlagState.Off)',
+         f'{i12}continue',
+         f'{i8}elif GetEventFlag({PASS_FLAG}) and not GetEventFlag({USED_FLAG}) and IsPlayerTalkingToMe() == 1:',
+         f'{i12}SetEventFlag({USED_FLAG}, FlagState.On)',
          f'{i12}continue',
          f'{i8}elif (IsPlayerTalkingToMe() == 1 and {near} and GetOneLineHelpStatus()',
          f'{i8}      and not GetEventFlag({PASS_FLAG}) and {alive}):',
