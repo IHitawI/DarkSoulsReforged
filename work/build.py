@@ -299,6 +299,9 @@ with open('dll/generated.h', 'w') as f:
     f.write(f'#define ESTUS_SHARD {hub_estus.SHARD}' + NL + f'#define ESTUS_KINDLED {hub_estus.KINDLED}' + NL + f'#define ESTUS_BASE {hub_estus.BASE}' + NL + f'#define ESTUS_MAX {hub_estus.MAX}' + NL)
     f.write('static const int ESTUS_CHARGED[] = {' + ', '.join(map(str, hub_estus.ESTUS_CHARGED)) + '};' + NL)
     f.write('static const int CLASS_BASE[CLASS_COUNT][9] = {' + ', '.join('{' + ', '.join(map(str, c)) + '}' for c in classes) + '};' + NL)
+    # travel: request flag k -> the DLL warps to bonfire k's spawn point (bonfire entity + 1000)
+    f.write(f'#define WARP_REQUEST_BASE {hub_travel.REQUEST_BASE}' + NL)
+    f.write('static const int WARP_TARGETS[] = {' + ', '.join(str(ent + 1000) for _, _, ent in TRAVEL) + '};' + NL)
 ZIG = os.path.abspath(os.path.join('..', 'tools_dl', 'zig', 'zig-x86_64-windows-0.16.0', 'zig.exe'))
 r = subprocess.run([ZIG, 'cc', '-target', 'x86_64-windows-gnu', '-shared', '-O2', '-Wall',
                     '-o', os.path.abspath('out/h/firelinkhub.dll'), 'firelinkhub.c'],

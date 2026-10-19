@@ -156,12 +156,107 @@ static void respec(ULONG_PTR pgd) {
     wr(pgd + PGD_SOULS, &new_souls, 4);
 }
 
+/* ---- travel: the game's own bonfire warp (what the vanilla warp menu and DSR Gadget use) ----
+ * Travel / debug set request flag WARP_REQUEST_BASE + k and close the bonfire menu. Here: clear the flag,
+ * write bonfire k's spawn point (bonfire entity + 1000) as the "last bonfire" and call the game's bonfire
+ * warp with (GameDataMan, 1) - it loads the map and puts the player there, any map to any map.
+ * (A map event warp, 2003[14], loses its spawn point across maps: the player fell out of the world.) */
+static const int WARP_PATTERN[] = {0x48,0x89,0x5C,0x24,0x08,0x57,0x48,0x83,0xEC,0x20,0x48,0x8B,0xD9,0x8B,0xFA,0x48,
+                                   0x8B,0x49,0x08,0x48,0x85,0xC9,0x0F,0x84,-1,-1,-1,-1,0xE8,-1,-1,-1,-1,0x48,0x8B,0x4B,0x08};
+/* "48 8B 05 ? ? ? ? 66 0F 7F 80 [StableXYZ] 0F 28 02 ...": a static pointer, then the stable position's offset */
+static const int CHR_WARP_PATTERN[] = {0x48,0x8B,0x05,-1,-1,-1,-1,0x66,0x0F,0x7F,0x80,-1,-1,-1,-1,0x0F,0x28,0x02,
+                                       0x66,0x0F,0x7F,0x80,-1,-1,-1,-1,0xC6,0x80};
+/* "48 8B 0D ? ? ? ? 99 33 C2 45 33 C0 2B C2 8D 50 F6": the event flag manager's static pointer */
+static const int FLAGS_PATTERN[] = {0x48,0x8B,0x0D,-1,-1,-1,-1,0x99,0x33,0xC2,0x45,0x33,0xC0,0x2B,0xC2,0x8D,0x50,0xF6};
+#define GADGET_STABLE_X 0xB90       /* DSR Gadget's offsets for the first game version; */
+#define GADGET_LAST_BONFIRE 0xB24   /* newer versions moved both by the same amount */
+#define WARP_COUNT (sizeof(WARP_TARGETS) / sizeof(WARP_TARGETS[0]))
+
+typedef void (*BonfireWarpFn)(ULONG_PTR game_data_man, int unk);
+
+static unsigned char *find_pattern(const int *pat, SIZE_T n) {
+    unsigned char *base = (unsigned char *)GetModuleHandleA(NULL);
+    IMAGE_NT_HEADERS *nt = (IMAGE_NT_HEADERS *)(base + ((IMAGE_DOS_HEADER *)base)->e_lfanew);
+    SIZE_T size = nt->OptionalHeader.SizeOfImage;
+    for (SIZE_T i = 0; i + n < size; i++) {
+        SIZE_T k = 0;
+        for (; k < n; k++) if (pat[k] >= 0 && base[i + k] != pat[k]) break;
+        if (k == n) return base + i;
+    }
+    return 0;
+}
+static ULONG_PTR rip_target(unsigned char *at) { return (ULONG_PTR)(at + 7 + *(int *)(at + 3)); }
+
+static ULONG_PTR g_flags_ptr, g_chr_warp_ptr;
+static int g_last_bonfire_off;
+static BonfireWarpFn g_bonfire_warp;
+
+/* event flag -> byte offset + mask in the flag block (DSR Gadget's layout): 8 digits g aaa s nnn */
+static int flag_offset(int id, unsigned *mask) {
+    static const int areas[][2] = {{0,0},{100,1},{101,2},{102,3},{110,4},{120,5},{121,6},{130,7},{131,8},{132,9},
+                                   {140,10},{141,11},{150,12},{151,13},{160,14},{170,15},{180,16},{181,17}};
+    int group = id / 10000000, area = id / 10000 % 1000, section = id / 1000 % 10, number = id % 1000;
+    int g;
+    switch (group) { case 0: g = 0; break; case 1: g = 0x500; break; case 5: g = 0x5F00; break;
+                     case 6: g = 0xB900; break; case 7: g = 0x11300; break; default: return -1; }
+    for (size_t i = 0; i < sizeof areas / sizeof areas[0]; i++)
+        if (areas[i][0] == area) {
+            *mask = 0x80000000u >> (number % 32);
+            return g + areas[i][1] * 0x500 + section * 128 + (number - number % 32) / 8;
+        }
+    return -1;
+}
+static ULONG_PTR flag_block(void) { ULONG_PTR p = rdp(g_flags_ptr); return p ? rdp(p) : 0; }
+static int get_flag(int id) {
+    unsigned mask, v;
+    int off = flag_offset(id, &mask);
+    ULONG_PTR b = flag_block();
+    return off >= 0 && b && rd(b + off, &v, 4) && (v & mask) != 0;
+}
+static void clear_flag(int id) {
+    unsigned mask, v;
+    int off = flag_offset(id, &mask);
+    ULONG_PTR b = flag_block();
+    if (off >= 0 && b && rd(b + off, &v, 4)) { v &= ~mask; wr(b + off, &v, 4); }
+}
+
+static void init_warp(void) {
+    unsigned char *f = find_pattern(FLAGS_PATTERN, sizeof FLAGS_PATTERN / sizeof FLAGS_PATTERN[0]);
+    unsigned char *c = find_pattern(CHR_WARP_PATTERN, sizeof CHR_WARP_PATTERN / sizeof CHR_WARP_PATTERN[0]);
+    g_bonfire_warp = (BonfireWarpFn)find_pattern(WARP_PATTERN, sizeof WARP_PATTERN / sizeof WARP_PATTERN[0]);
+    if (f) g_flags_ptr = rip_target(f);
+    if (c) {
+        g_chr_warp_ptr = rip_target(c);
+        g_last_bonfire_off = *(int *)(c + 11) - GADGET_STABLE_X + GADGET_LAST_BONFIRE;
+    }
+    log_line("travel: flags %p, chr warp %p (+0x%X), warp fn %p", (void *)g_flags_ptr, (void *)g_chr_warp_ptr,
+             g_last_bonfire_off, (void *)g_bonfire_warp);
+}
+
+static void travel(ULONG_PTR gdm_ptr) {
+    if (!g_flags_ptr || !g_chr_warp_ptr || !g_bonfire_warp) return;
+    for (size_t k = 0; k < WARP_COUNT; k++) {
+        if (!get_flag(WARP_REQUEST_BASE + (int)k)) continue;
+        clear_flag(WARP_REQUEST_BASE + (int)k);
+        ULONG_PTR chr = rdp(g_chr_warp_ptr), gdm = rdp(gdm_ptr);
+        if (!chr || !gdm) { log_line("travel %d: not in game", (int)k); return; }
+        int target = WARP_TARGETS[k];
+        wr(chr + g_last_bonfire_off, &target, 4);
+        log_line("travel %d: warp to spawn point %d", (int)k, target);
+        Sleep(1500);                    /* let the player stand up from the bonfire first */
+        g_bonfire_warp(gdm, 1);
+        return;
+    }
+}
+
 static DWORD WINAPI worker(LPVOID unused) {
     (void)unused;
     Sleep(5000);
     ULONG_PTR gdm_ptr = find_game_data_man_ptr();
     log_line("FirelinkHub DLL started, GameDataMan pointer at %p", (void *)gdm_ptr);
     if (!gdm_ptr) return 0;
+    init_warp();
+    int flags_logged = 0;
     static unsigned char pgd_buf[PGD_SCAN];
     ULONG_PTR last_pgd = 0;
     int last_qty[HERB_COUNT], last_stone = 0;
@@ -176,6 +271,12 @@ static DWORD WINAPI worker(LPVOID unused) {
             last_pgd = pgd;
             continue;
         }
+        if (!flags_logged) {            /* a check of the flag layout: Firelink lit = 1 on any character past the Asylum */
+            log_line("flags: Firelink lit %d, Lordvessel %d, travel request 0 %d", get_flag(11020992), get_flag(710),
+                     get_flag(WARP_REQUEST_BASE));
+            flags_logged = 1;
+        }
+        travel(gdm_ptr);
         cap_estus(pgd, pgd_buf);
         int stone = herb_quantity(pgd_buf, RESPEC_GOODS);   /* a key item: it only leaves when given away */
         if (stone < last_stone) respec(pgd);

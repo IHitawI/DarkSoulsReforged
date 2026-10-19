@@ -2,9 +2,10 @@
 
 Bonfire menu (every bonfire dialog): "Travel" -> zone -> bonfire. The entry appears with the
 Lordvessel (flag 710, same as vanilla "Warp"); a bonfire is listed once it is lit (its own flag).
-Choosing one sets a request flag; an event in common.emevd (runs on every map) clears it and
-moves the player to that map, onto the bonfire's respawn point (= bonfire entity + 1000, as the
-vanilla events use it).
+Choosing one sets a request flag and the player stands up; the DLL (dll/firelinkhub.c, travel()) sees
+the flag, clears it and calls the game's own bonfire warp to that bonfire's spawn point (bonfire entity
++ 1000). A map event warp (2003[14]) was used first: across maps it lost the spawn point and dropped
+the player out of the world.
 Bonfire list: every "register bonfire" (2009[3]) in the vanilla map events.
 """
 import os
@@ -13,7 +14,7 @@ from souls import dcx_read
 from emevd import Emevd, decode_args, build as build_emevd
 
 LORDVESSEL = 710
-EVENT_BASE = 11027800        # one event per bonfire
+EVENT_BASE = 11027800        # 11027800..898: events of the first (map event) warp, no longer built
 REQUEST_BASE = 11027200      # request flag per bonfire, 11027200..298 (was 11027850..: with the 11 restored
                              # bonfires it ran into the Yulia quest flags 11027903/904 - her quest warped you)
 UNLOCK_REQUEST = 11027299    # debug "unlock all bonfires": set here, the flags themselves are set by UNLOCK_EVENT
@@ -126,7 +127,7 @@ def patch_bonfire(src, bfs):
 
 
 def patch_common(data, edf, bfs):
-    """common.emevd: one waiting event per bonfire; started before event 0 bails out in multiplayer."""
+    """common.emevd: the debug "unlock all bonfires" event; started before event 0 bails out in multiplayer."""
     def ins(bank, iid, *vals):
         from emevd import encode_args
         _, args = edf.instr[(bank, iid)]
@@ -135,15 +136,6 @@ def patch_common(data, edf, bfs):
     ev = Emevd(data)
     e0 = next(e for e in ev.events if e['id'] == 0)
     starts = []
-    for k, (mp, _, ent) in enumerate(bfs):
-        area, block = int(mp[1:3]), int(mp[4:6])
-        req = REQUEST_BASE + k
-        ev.events.append({'id': EVENT_BASE + k, 'rest': 0, 'params': [], 'ins': [
-            ins(3, 0, 0, 1, 0, req),                    # wait for the request
-            ins(2003, 2, req, 0),
-            ins(2003, 14, area, block, ent + 1000),     # to that map, onto the bonfire's spawn point
-            ins(1000, 4, 1)]})                         # and wait again
-        starts.append(ins(2000, 0, 0, EVENT_BASE + k, 0))
     ev.events.append({'id': UNLOCK_EVENT, 'rest': 0, 'params': [], 'ins': [
         ins(3, 0, 0, 1, 0, UNLOCK_REQUEST),
         ins(1001, 0, 1.0)]                                              # the bonfire menu is closed by now
