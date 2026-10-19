@@ -28,4 +28,6 @@ python build.py
 python install.py
 ```
 
+`python build.py --release` builds without the bonfire debug menu (hub_debug.py); the default build has it.
+
 Don't rebuild while the game runs (the DLL is locked), and in co-op both players need the same build.

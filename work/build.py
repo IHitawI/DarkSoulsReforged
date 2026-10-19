@@ -4,7 +4,7 @@ from load import *
 import allyheal, hub_items, useful, hub_npc, hub_npc_esd, hub_debug, hub_yulia, hub_npcs, hub_decor, hub_respec, hub_spells, hub_talks, hub_rolls
 import talkpatch, texbank
 
-DEBUG = '--debug' in sys.argv   # adds the [FirelinkHub debug] bonfire menu; never ship this build
+DEBUG = '--release' not in sys.argv   # the [Reforged debug] bonfire menu (hub_debug.py); --release leaves it out
 from emevd import Edf, Emevd, build as build_emevd
 
 GAME = r'C:\Program Files (x86)\Steam\steamapps\common\DARK SOULS REMASTERED'
@@ -50,6 +50,9 @@ hub_world.TRAVEL = TRAVEL
 hub_champions.apply(GAME)
 import hub_quests
 hub_quests.texts()
+if DEBUG:
+    hub_debug.setup(TRAVEL)
+    hub_debug.apply()
 TRAVEL_TEXT = {('event', k): {'ru': ru, 'en': en, 'copy': None}
                for k, (ru, en) in hub_travel.texts(TRAVEL)[0].items()}
 
