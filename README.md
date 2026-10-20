@@ -164,7 +164,7 @@ python install.py    # копия в ModEngine2\FirelinkHub
 - **TKGP / JKAnderson** — DSR Gadget (адреса памяти игры).
 - **soulsmods** — ModEngine2. **LukeYui** — Seamless Co-op.
 - **Lua.org** — Lua 5.0.3, **Zig** — компилятор для DLL и luac.
-- Элион — стикеры автора проекта.
+- Элион — стикеры автора проекта. Фон баннера — официальный скриншот Храма Огня из Dark Souls.
 
 Dark Souls — торговая марка FromSoftware / Bandai Namco. Это фанатский некоммерческий мод.
 
