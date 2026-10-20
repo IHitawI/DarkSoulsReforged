@@ -166,6 +166,9 @@ _h, _d = dcx_read(f'{GAME}/script/m10_02_00_00.luabnd.dcx')
 _fl = Bnd3(_d)
 if luabnd.copy_goal(_fl, Bnd3(dcx_read(f'{GAME}/script/m15_01_00_00.luabnd.dcx')[1]), hub_npcs.GIANT_GOAL):
     dcx_write('out/h/script/m10_02_00_00.luabnd.dcx', _h, _fl.build())
+import hub_bossai   # bosses' second-phase AI (after the copies above: it patches those luabnds)
+if '--no-bossai' not in sys.argv:            # escape hatch if the game refuses a recompiled script
+    print('boss AI patched:', hub_bossai.apply(GAME, 'out/h/script'))
 hub_rolls.swap_motions(f'{GAME}/chr/{hub_rolls.MOTIONS}', f'out/h/chr/{hub_rolls.MOTIONS}')
 
 # hub_throws.py (allies hit an enemy during your riposte / backstab) is off: removing the victims' flag 67 did not
