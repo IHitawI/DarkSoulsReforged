@@ -100,6 +100,16 @@ def own_numbers(travel):
         for m in re.finditer(r'^([A-Z_0-9]+)\s*=\s*(1[0-9]{7})\b', open(f, encoding='utf-8').read(), re.M):
             if int(m.group(2)) not in own and m.group(1) not in VANILLA_REFS:
                 add(f'{f}:{m.group(1)}', [int(m.group(2))])
+    # sold-out flags of the mod's new shop rows (spell scrolls...), read from the built params
+    _, gp = dcx_read('out/h/GameParam.parambnd.dcx')
+    van_rows = {r[0] for r in P['ShopLineupParam'][0].rows}
+    for f in Bnd3(gp).files:
+        if b'ShopLineupParam' in f[2]:
+            p = Param(f[3])
+            L = load.DEFS[p.ptype]
+            for rid, row, _ in p.rows:
+                if rid not in van_rows and L.get(row, 'eventFlag') > 0:
+                    add(f'shop row {rid} sold-out', [L.get(row, 'eventFlag')])
     return own
 
 
