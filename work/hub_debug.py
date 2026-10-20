@@ -86,8 +86,7 @@ def _warp_menu(travel):
 def _boss_menus():
     names = []
     for k, (_, flag, _, _) in enumerate(hub_bosses.BOSSES):
-        t = hub_bosses.TEXT[('npcname', hub_bosses.PHASE_NAME_BASE + k)]
-        names.append((flag, t['ru'].split(' — ')[0], t['en'].split(' - ')[0]))
+        names.append((flag, *hub_bosses.NAMES[k]))
     names += EXTRA_BOSSES
     half = (len(names) + 1) // 2
     out = []

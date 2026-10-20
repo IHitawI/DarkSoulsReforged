@@ -4,7 +4,7 @@ A boss's battle script (Lua 5.0, 64-bit bytecode in script/<map>.luabnd) is deco
 (comes with Grimrukh's soulstruct), patched as text and compiled back with our own luac 5.0.3
 (tools_dl/lua50/luac50.exe, built with zig: soulstruct's LuaC.exe is a debug build that needs Visual
 Studio's ucrtbased.dll). The second phase is visible to the script: hub_bosses puts its phase SpEffect on
-the boss, ai:HasSpecialEffectId(TARGET_SELF, id) tests it.
+the boss (a stat-less marker per boss, hub_bosses.marker), ai:HasSpecialEffectId(TARGET_SELF, id) tests it.
 
 Checked on the Taurus Demon: same bytecode header as the game's; the instruction listings differ only by
 decompiler artefacts (an empty `return` at function ends, `a <= b` compiled as the reverse comparison,
@@ -21,7 +21,6 @@ import luabnd, hub_bosses
 
 DECOMPILER = os.path.expanduser(r'~\.reforged\venv\Lib\site-packages\soulstruct\base\ai\lua\x64\DSLuaDecompiler.exe')
 LUAC = os.path.abspath(os.path.join('..', 'tools_dl', 'lua50', 'luac50.exe'))
-RAGE = hub_bosses.PHASE_SP['rage']
 
 
 def decompile(bytecode):
@@ -54,9 +53,9 @@ def _append(src, code):
 
 
 def taurus(src):
-    p = 'Hammer_m10_225000'
+    p, mark = 'Hammer_m10_225000', hub_bosses.marker('taurus')
     src = _sub(src, f'    elseif fateAct <= Act01Per then\n        {p}_Act01(ai, goal)',
-               f'    elseif ai:HasSpecialEffectId(TARGET_SELF, {RAGE}) and {p}_Phase2(ai, goal, targetDist) then\n'
+               f'    elseif ai:HasSpecialEffectId(TARGET_SELF, {mark}) and {p}_Phase2(ai, goal, targetDist) then\n'
                f'        -- Reforged: second phase, jumps (its own roll; false = the usual choice below)\n'
                f'    elseif fateAct <= Act01Per then\n        {p}_Act01(ai, goal)')
     return _append(src, f'''

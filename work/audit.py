@@ -89,7 +89,7 @@ def own_numbers(travel):
     add('champion warp event', [C.warp_id(k) for k in range(n)])
     add('champion lot flag', [C.lot_flag(k) for k in range(n)])
     add('champion warp request', [C.WARP_REQUEST])
-    add('boss phase event', [hub_bosses.EVENT_BASE + k for k in range(len(hub_bosses.BOSSES))])
+    add('boss phase event', [hub_bosses.EVENT_BASE + hub_bosses.KEY[key] for key in hub_bosses.PHASES])
     for p in hub_bonfires.PLAN.values():
         add('restored bonfire flags', range(p['flag'], p['flag'] + 8))
         add('restored bonfire event', [p['event']])
@@ -147,7 +147,7 @@ def check_events():
 def check_debug(travel):
     print('4. debug menu')
     import hub_debug, hub_bosses
-    hub_bosses.apply(GAME) if not hub_bosses.TEXT else None
+    hub_bosses.apply(GAME) if not hub_bosses.NAMES else None
     hub_debug.setup(travel)
     _, gp = dcx_read('out/h/GameParam.parambnd.dcx')
     rows = {}
